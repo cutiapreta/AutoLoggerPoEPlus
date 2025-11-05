@@ -6,12 +6,6 @@ import {SignatureChecker} from "@openzeppelin/contracts/utils/cryptography/Signa
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /// @title AutoLoggerPoEPlus — Tamper‑proof Proof‑of‑Existence logger with gasless signing & fork‑safe digest
-/// @notice
-///  - Drop‑in compatible with your original API (log, logBatch, exists, getProof, verifyTag, computeDigest)
-///  - Adds gasless `logWithSig` using EIP‑712 + ERC‑1271 (smart wallet) verification
-///  - Fixes a subtle fork mismatch: `computeDigest` now recomputes the digest with the *provided* chainId
-///  - Adds EIP‑5267 domain introspection via OZ EIP712 and exposes domainSeparatorAt(chainId)
-///  - Adds a safety guard for overly long tags to avoid bloated events
 contract AutoLoggerPoEPlus is EIP712, ReentrancyGuard {
     // ---------------------------------------------------------------------
     // Errors
