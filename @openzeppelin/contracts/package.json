@@ -1,0 +1,62 @@
+{
+  "_from": "@openzeppelin/contracts@5.5.0",
+  "_id": "@openzeppelin/contracts@5.5.0",
+  "_inBundle": false,
+  "_integrity": "sha512-R8hq4zmKKWP2c7OxeRgAcjZwvF5W0Qq2OIX7degrtdM52Q9xYr4MLJdUAVPKGUewNJ1qo+M6YiZLLnNUnjP/gg==",
+  "_location": "/@openzeppelin/contracts",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@openzeppelin/contracts@5.5.0",
+    "name": "@openzeppelin/contracts",
+    "escapedName": "@openzeppelin%2fcontracts",
+    "scope": "@openzeppelin",
+    "rawSpec": "5.5.0",
+    "saveSpec": null,
+    "fetchSpec": "5.5.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@openzeppelin/contracts/-/contracts-5.5.0.tgz",
+  "_shasum": "24e8a2f9598de484dcb223512af656edf52bc0e8",
+  "_spec": "@openzeppelin/contracts@5.5.0",
+  "_where": "/home/gajnithehero/myproject",
+  "author": {
+    "name": "OpenZeppelin Community",
+    "email": "maintainers@openzeppelin.org"
+  },
+  "bugs": {
+    "url": "https://github.com/OpenZeppelin/openzeppelin-contracts/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Secure Smart Contract library for Solidity",
+  "files": [
+    "**/*.sol",
+    "/build/contracts/*.json",
+    "!/mocks/**/*"
+  ],
+  "homepage": "https://openzeppelin.com/contracts/",
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "security",
+    "zeppelin"
+  ],
+  "license": "MIT",
+  "name": "@openzeppelin/contracts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenZeppelin/openzeppelin-contracts.git"
+  },
+  "scripts": {
+    "prepack": "bash ../scripts/prepack.sh",
+    "prepare-docs": "cd ..; npm run prepare-docs"
+  },
+  "version": "5.5.0"
+}
