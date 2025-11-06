@@ -31,9 +31,22 @@ This contract serves as a drop-in upgrade to the original `AutoLoggerPoE` and in
 
 - Prevents excessively long tags to mitigate gas-bloating and potential DoS risks
 - Uses OpenZeppelin’s `ReentrancyGuard` to prevent reentrancy attacks
-
+- Explicitly rejects ETH transfers via `receive()` and `fallback()` to avoid accidental fund deposits
+  
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Architecture
 
-Explicitly rejects ETH transfers via receive() and fallback() to avoid accidental fund deposits.
+**Core Data Structure**
+
+```solidity
+struct Proof {
+    address user;       // Owner of the proof
+    uint64 blockNumber; // Block when logged
+    uint64 timestamp;   // Timestamp at logging
+    uint64 chainId;     // Chain ID (fork-safe)
+    bytes32 tagHash;    // Keccak256 hash of tag
+    bytes32 digest;     // EIP-712-style digest
+}
+```
+each `dataHash` maps to a unique `Proof`, ensuring immutability and non-replayability
