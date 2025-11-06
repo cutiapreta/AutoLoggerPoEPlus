@@ -111,14 +111,8 @@ contract AutoLoggerPoEPlus is EIP712, ReentrancyGuard {
         );
         digest = _hashTypedDataV4For(structHash, cid);
 
-        _proofs[dataHash] = Proof({
-            user: msg.sender,
-            blockNumber: bn,
-            timestamp: ts,
-            chainId: cid,
-            tagHash: tagHash,
-            digest: digest
-        });
+        _proofs[dataHash] =
+            Proof({user: msg.sender, blockNumber: bn, timestamp: ts, chainId: cid, tagHash: tagHash, digest: digest});
 
         emit ProofLogged(dataHash, digest, msg.sender, tagHash, tag, uint256(bn), uint256(ts), uint256(cid));
     }
@@ -147,19 +141,12 @@ contract AutoLoggerPoEPlus is EIP712, ReentrancyGuard {
 
             bytes32 tagHash = keccak256(bytes(tags[i]));
 
-            bytes32 structHash = keccak256(
-                abi.encode(PROOF_TYPEHASH, h, tagHash, msg.sender, uint256(bn), uint256(ts), uint256(cid))
-            );
+            bytes32 structHash =
+                keccak256(abi.encode(PROOF_TYPEHASH, h, tagHash, msg.sender, uint256(bn), uint256(ts), uint256(cid)));
             bytes32 d = _hashTypedDataV4For(structHash, cid);
 
-            _proofs[h] = Proof({
-                user: msg.sender,
-                blockNumber: bn,
-                timestamp: ts,
-                chainId: cid,
-                tagHash: tagHash,
-                digest: d
-            });
+            _proofs[h] =
+                Proof({user: msg.sender, blockNumber: bn, timestamp: ts, chainId: cid, tagHash: tagHash, digest: d});
 
             emit ProofLogged(h, d, msg.sender, tagHash, tags[i], uint256(bn), uint256(ts), uint256(cid));
             digests[i] = d;
@@ -197,19 +184,12 @@ contract AutoLoggerPoEPlus is EIP712, ReentrancyGuard {
         uint64 ts = uint64(block.timestamp);
         uint64 cid = uint64(block.chainid);
 
-        bytes32 structHash = keccak256(
-            abi.encode(PROOF_TYPEHASH, dataHash, tagHash, user, uint256(bn), uint256(ts), uint256(cid))
-        );
+        bytes32 structHash =
+            keccak256(abi.encode(PROOF_TYPEHASH, dataHash, tagHash, user, uint256(bn), uint256(ts), uint256(cid)));
         digest = _hashTypedDataV4For(structHash, cid);
 
-        _proofs[dataHash] = Proof({
-            user: user,
-            blockNumber: bn,
-            timestamp: ts,
-            chainId: cid,
-            tagHash: tagHash,
-            digest: digest
-        });
+        _proofs[dataHash] =
+            Proof({user: user, blockNumber: bn, timestamp: ts, chainId: cid, tagHash: tagHash, digest: digest});
 
         emit ProofLogged(dataHash, digest, user, tagHash, tag, uint256(bn), uint256(ts), uint256(cid));
         if (msg.sender != user) emit ProofRelayed(dataHash, user, msg.sender);
