@@ -160,13 +160,11 @@ contract AutoLoggerPoEPlus is EIP712, ReentrancyGuard {
     // ---------------------------------------------------------------------
     // Gasless meta‑tx
     // ---------------------------------------------------------------------
-    function logWithSig(
-        bytes32 dataHash,
-        string calldata tag,
-        address user,
-        uint256 deadline,
-        bytes calldata signature
-    ) external nonReentrant returns (bytes32 digest) {
+    function logWithSig(bytes32 dataHash, string calldata tag, address user, uint256 deadline, bytes calldata signature)
+        external
+        nonReentrant
+        returns (bytes32 digest)
+    {
         if (_proofs[dataHash].user != address(0)) revert AlreadyLogged(dataHash);
         uint256 tagLen = bytes(tag).length;
         if (tagLen > MAX_TAG_BYTES) revert TagTooLong(tagLen);
